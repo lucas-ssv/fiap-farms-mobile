@@ -1,7 +1,7 @@
 {
   "name": "fiap-farms-mobile",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "src/main/index.ts",
   "scripts": {
     "start": "expo start",
     "android": "DARK_MODE=media expo start --android",
@@ -9,12 +9,14 @@
     "web": "DARK_MODE=media expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/geist": "^0.4.0",
     "@gluestack-ui/icon": "^0.1.27",
     "@gluestack-ui/nativewind-utils": "^1.0.26",
     "@gluestack-ui/overlay": "^0.1.22",
     "@gluestack-ui/toast": "^1.0.9",
     "babel-plugin-module-resolver": "^5.0.2",
     "expo": "~53.0.20",
+    "expo-font": "~13.3.2",
     "expo-status-bar": "~2.2.3",
     "nativewind": "^4.1.23",
     "react": "19.0.0",
@@ -24,7 +26,8 @@
     "react-native-reanimated": "^3.18.0",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-svg": "^15.2.0",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "expo-splash-screen": "~0.30.10"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
