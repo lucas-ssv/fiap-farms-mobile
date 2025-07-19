@@ -24,6 +24,19 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font", 
+        {
+          "fonts": [
+            "node_modules/@expo-google-fonts/400Regular/Geist_400Regular.ttf",
+            "node_modules/@expo-google-fonts/500Medium/Geist_500Medium.ttf",
+            "node_modules/@expo-google-fonts/600SemiBold/Geist_600SemiBold.ttf",
+            "node_modules/@expo-google-fonts/700Bold/Geist_700Bold.ttf"
+          ]
+        }
+      ]
+    ]
   }
 }
