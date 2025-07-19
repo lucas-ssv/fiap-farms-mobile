@@ -1,0 +1,6 @@
+export * from './mock-add-product-repository'
+export * from './mock-update-product-repository'
+export * from './mock-load-products-repository'
+export * from './mock-remove-product-repository'
+export * from './mock-watch-products-repository'
+export * from './mock-load-by-product-id-repository'
