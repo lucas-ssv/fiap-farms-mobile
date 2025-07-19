@@ -1,0 +1,5 @@
+export * from './add-category-repository'
+export * from './update-category-repository'
+export * from './load-categories-repository'
+export * from './watch-categories-repository'
+export * from './remove-category-repository'
