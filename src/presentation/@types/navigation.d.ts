@@ -5,6 +5,7 @@ export type StackParamList = {
 
 export type DrawerParamList = {
   Dashboard: undefined
+  Products: undefined
 }
 
 declare global {
