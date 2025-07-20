@@ -25,6 +25,7 @@ import z from 'zod/v4'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Authentication } from '@/domain/usecases/account'
+import { useNavigation } from '@react-navigation/native'
 
 type LoginFormData = {
   email: string
@@ -51,6 +52,7 @@ export function Login({ authentication }: Props) {
       password: '',
     },
   })
+  const navigate = useNavigation()
 
   const onSubmit = async (data: LoginFormData) => {
     try {
@@ -80,7 +82,7 @@ export function Login({ authentication }: Props) {
   return (
     <VStack className="h-screen justify-center">
       <Image className="absolute h-screen w-screen" source={LoginBg} alt="" />
-      <Box className="w-full flex justify-center items-center absolute top-24">
+      <Box className="w-full flex justify-center items-center mb-10">
         <Logo />
       </Box>
       <VStack className="flex bg-white justify-center px-4 py-10 rounded-lg mx-4">
@@ -156,11 +158,15 @@ export function Login({ authentication }: Props) {
         >
           <ButtonText>Acessar</ButtonText>
         </Button>
-        <Link className="text-center flex justify-center mt-6 items-center">
-          <LinkText className="text-custom-gray font-medium no-underline">
+        <Button
+          variant="link"
+          className="mt-4"
+          onPress={() => navigate.navigate('SignUp')}
+        >
+          <ButtonText className="text-custom-gray font-medium no-underline">
             Criar conta
-          </LinkText>
-        </Link>
+          </ButtonText>
+        </Button>
       </VStack>
     </VStack>
   )
