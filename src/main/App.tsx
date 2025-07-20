@@ -13,6 +13,8 @@ import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 import { Text } from '@/presentation/components/ui'
 import { Login } from '@/presentation/screens/auth'
+import { MakeLogin } from './factories/screens/auth'
+import { MakeAuthProvider } from './factories/providers'
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -34,7 +36,9 @@ export default function App() {
 
   return (
     <GluestackUIProvider mode="light">
-      <Login />
+      <MakeAuthProvider>
+        <MakeLogin />
+      </MakeAuthProvider>
       <StatusBar style="auto" />
     </GluestackUIProvider>
   )
