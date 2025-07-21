@@ -1,9 +1,11 @@
 import {
   MakeCategories,
+  MakeNewProduct,
   MakeProducts,
 } from '@/main/factories/screens/app/Products'
+import { MakeNewCategory } from '@/main/factories/screens/app/Categories'
+import { MakeDashboard } from '@/main/factories/screens/app/dashboard-factory'
 import { DrawerParamList } from '@/presentation/@types/navigation'
-import { Dashboard } from '@/presentation/screens/app'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { DrawerContent } from './components'
 import { DrawerActions, useNavigation } from '@react-navigation/native'
@@ -13,11 +15,24 @@ import { useAuth } from '@/presentation/contexts'
 import { MakeCustomers, MakeSales } from '@/main/factories/screens/app/Sales'
 import { MakeGoals } from '@/main/factories/screens/app/Goals'
 import { MakeProductions } from '@/main/factories/screens/app/Productions'
+import { View } from 'react-native'
 
 const { Navigator, Screen, Group } = createDrawerNavigator<DrawerParamList>()
 
 type Props = {
   logout: Logout
+}
+
+const screenTitles = {
+  Dashboard: 'Painel Geral',
+  Products: 'Produtos',
+  NewProduct: 'Novo Produto',
+  Categories: 'Categorias',
+  NewCategory: 'Nova Categoria',
+  Sales: 'Vendas',
+  Customers: 'Clientes',
+  Goals: 'Metas',
+  Productions: 'Produção',
 }
 
 export function DrawerRoutes({ logout }: Props) {
@@ -32,55 +47,123 @@ export function DrawerRoutes({ logout }: Props) {
   return (
     <Navigator
       drawerContent={DrawerContent}
-      screenOptions={{
+      screenOptions={({ route }) => ({
         headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#f8fafc',
+          elevation: 2,
+          shadowOpacity: 0.1,
+          borderBottomWidth: 1,
+          borderBottomColor: '#e2e8f0',
+        },
+        headerTitleStyle: {
+          fontWeight: '600',
+          fontSize: 18,
+          color: '#1e293b',
+        },
         headerLeft({ tintColor }) {
           return (
-            <Feather
-              name="menu"
-              color={tintColor}
-              size={22}
-              style={{ marginStart: 16 }}
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            />
+            <View style={{ marginLeft: 16 }}>
+              <Feather
+                name="menu"
+                color="#059669"
+                size={24}
+                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+              />
+            </View>
           )
         },
         headerLeftContainerStyle: {
           paddingHorizontal: 8,
         },
         headerRightContainerStyle: {
-          paddingHorizontal: 24,
+          paddingHorizontal: 16,
         },
-        headerTintColor: '#11813c',
         headerRight() {
           return (
-            <Feather
-              name="log-out"
-              color="#11813c"
-              size={22}
-              style={{ marginStart: 16 }}
-              onPress={handleLogout}
-            />
+            <View
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}
+            >
+              <Feather
+                name="log-out"
+                color="#dc2626"
+                size={20}
+                onPress={handleLogout}
+              />
+            </View>
           )
         },
+        drawerType: 'front',
+        drawerStyle: {
+          backgroundColor: 'white',
+          width: 280,
+        },
         drawerItemStyle: {
-          borderRadius: 8,
+          display: 'none',
         },
         drawerActiveBackgroundColor: 'transparent',
-        drawerActiveTintColor: '#11813c',
-      }}
+        drawerActiveTintColor: '#059669',
+        drawerInactiveTintColor: '#6b7280',
+        title:
+          screenTitles[route.name as keyof typeof screenTitles] || route.name,
+      })}
     >
-      <Screen name="Dashboard" component={Dashboard} />
-      <Group>
+      <Screen
+        name="Dashboard"
+        component={MakeDashboard}
+        options={{
+          headerLeft({ tintColor }) {
+            return (
+              <View
+                style={{
+                  marginLeft: 16,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+              >
+                <Feather
+                  name="menu"
+                  color="#059669"
+                  size={24}
+                  onPress={() =>
+                    navigation.dispatch(DrawerActions.openDrawer())
+                  }
+                />
+              </View>
+            )
+          },
+        }}
+      />
+      <Group
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f0fdf4',
+          },
+        }}
+      >
         <Screen name="Products" component={MakeProducts} />
+        <Screen name="NewProduct" component={MakeNewProduct} />
         <Screen name="Categories" component={MakeCategories} />
+        <Screen name="NewCategory" component={MakeNewCategory} />
       </Group>
-      <Group>
+      <Group
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#ecfdf5',
+          },
+        }}
+      >
         <Screen name="Sales" component={MakeSales} />
         <Screen name="Customers" component={MakeCustomers} />
         <Screen name="Goals" component={MakeGoals} />
       </Group>
-      <Group>
+      <Group
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f0f9ff',
+          },
+        }}
+      >
         <Screen name="Productions" component={MakeProductions} />
       </Group>
     </Navigator>

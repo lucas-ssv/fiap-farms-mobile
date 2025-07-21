@@ -6,7 +6,9 @@ export type StackParamList = {
 export type DrawerParamList = {
   Dashboard: undefined
   Products: undefined
+  NewProduct: undefined
   Categories: undefined
+  NewCategory: undefined
   Sales: undefined
   Customers: undefined
   Goals: undefined
