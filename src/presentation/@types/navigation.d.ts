@@ -8,6 +8,7 @@ export type DrawerParamList = {
   Products: undefined
   NewProduct: undefined
   Categories: undefined
+  NewCategory: undefined
   Sales: undefined
   Customers: undefined
   Goals: undefined

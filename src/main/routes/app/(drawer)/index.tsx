@@ -3,6 +3,7 @@ import {
   MakeNewProduct,
   MakeProducts,
 } from '@/main/factories/screens/app/Products'
+import { MakeNewCategory } from '@/main/factories/screens/app/Categories'
 import { MakeDashboard } from '@/main/factories/screens/app/dashboard-factory'
 import { DrawerParamList } from '@/presentation/@types/navigation'
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -27,6 +28,7 @@ const screenTitles = {
   Products: 'Produtos',
   NewProduct: 'Novo Produto',
   Categories: 'Categorias',
+  NewCategory: 'Nova Categoria',
   Sales: 'Vendas',
   Customers: 'Clientes',
   Goals: 'Metas',
@@ -142,6 +144,7 @@ export function DrawerRoutes({ logout }: Props) {
         <Screen name="Products" component={MakeProducts} />
         <Screen name="NewProduct" component={MakeNewProduct} />
         <Screen name="Categories" component={MakeCategories} />
+        <Screen name="NewCategory" component={MakeNewCategory} />
       </Group>
       <Group
         screenOptions={{

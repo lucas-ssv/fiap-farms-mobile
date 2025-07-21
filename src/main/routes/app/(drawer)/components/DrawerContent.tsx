@@ -52,6 +52,13 @@ const drawerItems: DrawerItem[] = [
     route: 'Categories',
   },
   {
+    key: 'newCategory',
+    title: 'Nova Categoria',
+    icon: 'category',
+    iconFamily: 'MaterialIcons',
+    route: 'NewCategory',
+  },
+  {
     key: 'sales',
     title: 'Vendas',
     icon: 'trending-up',
