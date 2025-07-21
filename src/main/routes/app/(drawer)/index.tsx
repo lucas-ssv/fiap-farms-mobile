@@ -11,6 +11,7 @@ import Feather from '@expo/vector-icons/Feather'
 import { Logout } from '@/domain/usecases/account'
 import { useAuth } from '@/presentation/contexts'
 import { MakeCustomers, MakeSales } from '@/main/factories/screens/app/Sales'
+import { MakeGoals } from '@/main/factories/screens/app/Goals'
 
 const { Navigator, Screen, Group } = createDrawerNavigator<DrawerParamList>()
 
@@ -76,6 +77,7 @@ export function DrawerRoutes({ logout }: Props) {
       <Group>
         <Screen name="Sales" component={MakeSales} />
         <Screen name="Customers" component={MakeCustomers} />
+        <Screen name="Goals" component={MakeGoals} />
       </Group>
     </Navigator>
   )
