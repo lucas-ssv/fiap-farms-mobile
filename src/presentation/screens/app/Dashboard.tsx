@@ -234,7 +234,10 @@ export function Dashboard({
   }
 
   return (
-    <ScrollView className="flex-1 bg-white">
+    <ScrollView
+      className="flex-1 bg-white"
+      showsVerticalScrollIndicator={false}
+    >
       <View className="p-4">
         {filteredData.length > 0 && (
           <>
