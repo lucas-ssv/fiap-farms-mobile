@@ -38,6 +38,13 @@ const drawerItems: DrawerItem[] = [
     route: 'Products',
   },
   {
+    key: 'newProduct',
+    title: 'Novo Produto',
+    icon: 'plus-circle',
+    iconFamily: 'Feather',
+    route: 'NewProduct',
+  },
+  {
     key: 'categories',
     title: 'Categorias',
     icon: 'category',

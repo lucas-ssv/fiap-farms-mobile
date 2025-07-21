@@ -266,28 +266,6 @@ export function Dashboard({
           </>
         )}
 
-        {pieChartData.length > 0 && (
-          <View className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
-            <Text className="text-lg font-semibold text-gray-700 mb-4">
-              Produtos Populares (Estoque)
-            </Text>
-            <View className="items-center">
-              <PieChart
-                data={pieChartData}
-                width={screenWidth - 32}
-                height={220}
-                chartConfig={chartConfig}
-                accessor="amount"
-                backgroundColor="transparent"
-                paddingLeft="15"
-                center={[10, 10]}
-                absolute
-              />
-            </View>
-          </View>
-        )}
-
-        {/* Detalhes dos Produtos - Lucro */}
         {filteredData.length > 0 && (
           <View className="bg-white rounded-lg shadow-sm border border-gray-200 mb-4 p-4">
             <Text className="text-lg font-semibold text-gray-700 mb-3">
@@ -310,6 +288,27 @@ export function Dashboard({
                 </Text>
               </View>
             ))}
+          </View>
+        )}
+
+        {pieChartData.length > 0 && (
+          <View className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
+            <Text className="text-lg font-semibold text-gray-700 mb-4">
+              Produtos Populares (Estoque)
+            </Text>
+            <View className="items-center">
+              <PieChart
+                data={pieChartData}
+                width={screenWidth - 32}
+                height={220}
+                chartConfig={chartConfig}
+                accessor="amount"
+                backgroundColor="transparent"
+                paddingLeft="15"
+                center={[10, 10]}
+                absolute
+              />
+            </View>
           </View>
         )}
 

@@ -1,5 +1,6 @@
 import {
   MakeCategories,
+  MakeNewProduct,
   MakeProducts,
 } from '@/main/factories/screens/app/Products'
 import { MakeDashboard } from '@/main/factories/screens/app/dashboard-factory'
@@ -24,6 +25,7 @@ type Props = {
 const screenTitles = {
   Dashboard: 'Painel Geral',
   Products: 'Produtos',
+  NewProduct: 'Novo Produto',
   Categories: 'Categorias',
   Sales: 'Vendas',
   Customers: 'Clientes',
@@ -138,6 +140,7 @@ export function DrawerRoutes({ logout }: Props) {
         }}
       >
         <Screen name="Products" component={MakeProducts} />
+        <Screen name="NewProduct" component={MakeNewProduct} />
         <Screen name="Categories" component={MakeCategories} />
       </Group>
       <Group
