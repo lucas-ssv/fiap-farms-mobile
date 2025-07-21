@@ -1,6 +1,6 @@
 export * from './text'
 export * from './form-control'
-export * from "./input"
+export * from './input'
 export * from './vstack'
 export * from './image'
 export * from './heading'
@@ -16,3 +16,4 @@ export * from './card'
 export * from './hstack'
 export * from './modal'
 export * from './icon'
+export * from './select'
