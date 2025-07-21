@@ -10,6 +10,7 @@ import { DrawerActions, useNavigation } from '@react-navigation/native'
 import Feather from '@expo/vector-icons/Feather'
 import { Logout } from '@/domain/usecases/account'
 import { useAuth } from '@/presentation/contexts'
+import { MakeSales } from '@/main/factories/screens/app/Sales'
 
 const { Navigator, Screen, Group } = createDrawerNavigator<DrawerParamList>()
 
@@ -71,6 +72,9 @@ export function DrawerRoutes({ logout }: Props) {
       <Group>
         <Screen name="Products" component={MakeProducts} />
         <Screen name="Categories" component={MakeCategories} />
+      </Group>
+      <Group>
+        <Screen name="Sales" component={MakeSales} />
       </Group>
     </Navigator>
   )
