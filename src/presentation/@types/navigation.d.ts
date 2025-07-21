@@ -8,6 +8,7 @@ export type DrawerParamList = {
   Products: undefined
   Categories: undefined
   Sales: undefined
+  Customers: undefined
 }
 
 declare global {
