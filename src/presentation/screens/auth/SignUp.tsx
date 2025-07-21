@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ButtonIcon,
   ButtonText,
   Divider,
   FormControl,
@@ -12,6 +13,7 @@ import {
   InputField,
   Link,
   LinkText,
+  Spinner,
   Text,
   Toast,
   ToastDescription,
@@ -108,7 +110,11 @@ export function SignUp({ addAccount }: Props) {
       <Box className="w-full flex justify-center items-center my-10">
         <Logo />
       </Box>
-      <ScrollView className="mx-4 my-10" showsVerticalScrollIndicator={false}>
+      <ScrollView
+        className="mx-4 my-10"
+        automaticallyAdjustKeyboardInsets
+        showsVerticalScrollIndicator={false}
+      >
         <VStack className="flex bg-white justify-center px-4 py-10 rounded-lg">
           <Heading className="text-center text-custom-black">
             Crie sua conta
@@ -258,7 +264,13 @@ export function SignUp({ addAccount }: Props) {
             action="positive"
             className="h-12 rounded-lg mt-4"
             onPress={form.handleSubmit(onSubmit)}
+            disabled={form.formState.isSubmitting}
           >
+            {form.formState.isSubmitting && (
+              <ButtonIcon>
+                <Spinner />
+              </ButtonIcon>
+            )}
             <ButtonText>Criar conta</ButtonText>
           </Button>
           <Divider className="mt-4" />
@@ -272,7 +284,7 @@ export function SignUp({ addAccount }: Props) {
             onPress={() => navigate.goBack()}
           >
             <ButtonText className="text-custom-gray font-medium no-underline">
-              Criar conta
+              Fazer login
             </ButtonText>
           </Button>
         </VStack>

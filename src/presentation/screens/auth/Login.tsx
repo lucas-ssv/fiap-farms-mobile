@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ButtonIcon,
   ButtonText,
   FormControl,
   FormControlError,
@@ -12,6 +13,7 @@ import {
   InputField,
   Link,
   LinkText,
+  Spinner,
   Text,
   Toast,
   ToastDescription,
@@ -26,6 +28,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Authentication } from '@/domain/usecases/account'
 import { useNavigation } from '@react-navigation/native'
+import { ScrollView } from 'react-native'
 
 type LoginFormData = {
   email: string
@@ -80,94 +83,105 @@ export function Login({ authentication }: Props) {
   }
 
   return (
-    <VStack className="h-screen justify-center">
-      <Image className="absolute h-screen w-screen" source={LoginBg} alt="" />
-      <Box className="w-full flex justify-center items-center mb-10">
-        <Logo />
-      </Box>
-      <VStack className="flex bg-white justify-center px-4 py-10 rounded-lg mx-4">
-        <Heading className="text-center text-custom-black">
-          Faça seu login
-        </Heading>
-        <Text className="text-center text-custom-gray mt-2">
-          Acesse sua conta e acompanhe os resultados do seu negócio
-        </Text>
+    <ScrollView automaticallyAdjustKeyboardInsets>
+      <VStack className="h-screen justify-center">
+        <Image className="absolute h-screen w-screen" source={LoginBg} alt="" />
+        <Box className="w-full flex justify-center items-center mb-10">
+          <Logo />
+        </Box>
+        <VStack className="flex bg-white justify-center px-4 py-10 rounded-lg mx-4">
+          <Heading className="text-center text-custom-black">
+            Faça seu login
+          </Heading>
+          <Text className="text-center text-custom-gray mt-2">
+            Acesse sua conta e acompanhe os resultados do seu negócio
+          </Text>
 
-        <FormControl className="mt-6" isInvalid={!!form.formState.errors.email}>
-          <Controller
-            control={form.control}
-            name="email"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input className="h-12 bg-white rounded-lg border border-custom-light-gray">
-                <InputField
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  value={value}
-                  placeholder="E-mail"
-                />
-              </Input>
+          <FormControl
+            className="mt-6"
+            isInvalid={!!form.formState.errors.email}
+          >
+            <Controller
+              control={form.control}
+              name="email"
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Input className="h-12 bg-white rounded-lg border border-custom-light-gray">
+                  <InputField
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    value={value}
+                    placeholder="E-mail"
+                  />
+                </Input>
+              )}
+            />
+            {form.formState.errors.email && (
+              <FormControlError>
+                <FormControlErrorText>
+                  {form.formState.errors.email?.message}
+                </FormControlErrorText>
+              </FormControlError>
             )}
-          />
-          {form.formState.errors.email && (
-            <FormControlError>
-              <FormControlErrorText>
-                {form.formState.errors.email?.message}
-              </FormControlErrorText>
-            </FormControlError>
-          )}
-        </FormControl>
+          </FormControl>
 
-        <FormControl
-          className="mt-4"
-          isInvalid={!!form.formState.errors.password}
-        >
-          <Controller
-            control={form.control}
-            name="password"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input className="h-12 bg-white rounded-lg border border-custom-light-gray">
-                <InputField
-                  type="password"
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  value={value}
-                  placeholder="Senha"
-                />
-              </Input>
+          <FormControl
+            className="mt-4"
+            isInvalid={!!form.formState.errors.password}
+          >
+            <Controller
+              control={form.control}
+              name="password"
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Input className="h-12 bg-white rounded-lg border border-custom-light-gray">
+                  <InputField
+                    type="password"
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    value={value}
+                    placeholder="Senha"
+                  />
+                </Input>
+              )}
+            />
+            {form.formState.errors.password && (
+              <FormControlError>
+                <FormControlErrorText>
+                  {form.formState.errors.password?.message}
+                </FormControlErrorText>
+              </FormControlError>
             )}
-          />
-          {form.formState.errors.password && (
-            <FormControlError>
-              <FormControlErrorText>
-                {form.formState.errors.password?.message}
-              </FormControlErrorText>
-            </FormControlError>
-          )}
-        </FormControl>
+          </FormControl>
 
-        <Link className="mt-2">
-          <LinkText className="text-custom-gray no-underline">
-            Esqueceu a senha?
-          </LinkText>
-        </Link>
+          <Link className="mt-2">
+            <LinkText className="text-custom-gray no-underline">
+              Esqueceu a senha?
+            </LinkText>
+          </Link>
 
-        <Button
-          action="positive"
-          className="h-12 rounded-lg mt-4"
-          onPress={form.handleSubmit(onSubmit)}
-        >
-          <ButtonText>Acessar</ButtonText>
-        </Button>
-        <Button
-          variant="link"
-          className="mt-4"
-          onPress={() => navigate.navigate('SignUp')}
-        >
-          <ButtonText className="text-custom-gray font-medium no-underline">
-            Criar conta
-          </ButtonText>
-        </Button>
+          <Button
+            action="positive"
+            className="h-12 rounded-lg mt-4"
+            onPress={form.handleSubmit(onSubmit)}
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting && (
+              <ButtonIcon>
+                <Spinner />
+              </ButtonIcon>
+            )}
+            <ButtonText>Acessar</ButtonText>
+          </Button>
+          <Button
+            variant="link"
+            className="mt-4"
+            onPress={() => navigate.navigate('SignUp')}
+          >
+            <ButtonText className="text-custom-gray font-medium no-underline">
+              Criar conta
+            </ButtonText>
+          </Button>
+        </VStack>
       </VStack>
-    </VStack>
+    </ScrollView>
   )
 }
