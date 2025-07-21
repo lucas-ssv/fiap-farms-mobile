@@ -6,11 +6,12 @@ export type StackParamList = {
 export type DrawerParamList = {
   Dashboard: undefined
   Products: undefined
+  Categories: undefined
 }
 
 declare global {
   namespace ReactNavigation {
     // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-    interface RootParamList extends StackParamList extends DrawerParamList {}
+    interface RootParamList extends StackParamList, DrawerParamList {}
   }
 }

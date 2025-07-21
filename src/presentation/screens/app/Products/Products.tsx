@@ -224,7 +224,6 @@ export function Products({
                 <ProductModal
                   item={item}
                   categories={categories}
-                  removeProduct={removeProduct}
                   updateProduct={updateProduct}
                 />
                 <Button onPress={() => handleRemoveProduct(item.id)}>

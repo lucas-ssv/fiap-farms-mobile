@@ -80,15 +80,9 @@ type Props = {
   item: ProductModel
   categories: LoadCategories.Result
   updateProduct: UpdateProduct
-  removeProduct: RemoveProduct
 }
 
-export function ProductModal({
-  item,
-  categories,
-  removeProduct,
-  updateProduct,
-}: Props) {
+export function ProductModal({ item, categories, updateProduct }: Props) {
   const toast = useToast()
   const form = useForm<UpdateProductFormData>({
     resolver: zodResolver(schema),
@@ -495,9 +489,7 @@ export function ProductModal({
               isDisabled={form.formState.isSubmitting}
             >
               {form.formState.isSubmitting && (
-                <ButtonIcon>
-                  <Spinner />
-                </ButtonIcon>
+                <Spinner className="text-white" />
               )}
               <ButtonText>Atualizar produto</ButtonText>
             </Button>

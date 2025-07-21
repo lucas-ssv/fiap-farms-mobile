@@ -1,4 +1,7 @@
-import { MakeProducts } from '@/main/factories/screens/app/Products'
+import {
+  MakeCategories,
+  MakeProducts,
+} from '@/main/factories/screens/app/Products'
 import { DrawerParamList } from '@/presentation/@types/navigation'
 import { Dashboard } from '@/presentation/screens/app'
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -27,7 +30,7 @@ export function DrawerRoutes({ logout }: Props) {
     <Navigator
       drawerContent={DrawerContent}
       screenOptions={{
-        headerTitle: '',
+        headerTitleAlign: 'center',
         headerLeft({ tintColor }) {
           return (
             <Feather
@@ -67,6 +70,7 @@ export function DrawerRoutes({ logout }: Props) {
       <Screen name="Dashboard" component={Dashboard} />
       <Group>
         <Screen name="Products" component={MakeProducts} />
+        <Screen name="Categories" component={MakeCategories} />
       </Group>
     </Navigator>
   )
