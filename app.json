@@ -20,14 +20,15 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.lucasssv.fiapfarmsmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       [
-        "expo-font", 
+        "expo-font",
         {
           "fonts": [
             "node_modules/@expo-google-fonts/400Regular/Geist_400Regular.ttf",
