@@ -12,6 +12,7 @@ import { Logout } from '@/domain/usecases/account'
 import { useAuth } from '@/presentation/contexts'
 import { MakeCustomers, MakeSales } from '@/main/factories/screens/app/Sales'
 import { MakeGoals } from '@/main/factories/screens/app/Goals'
+import { MakeProductions } from '@/main/factories/screens/app/Productions'
 
 const { Navigator, Screen, Group } = createDrawerNavigator<DrawerParamList>()
 
@@ -78,6 +79,9 @@ export function DrawerRoutes({ logout }: Props) {
         <Screen name="Sales" component={MakeSales} />
         <Screen name="Customers" component={MakeCustomers} />
         <Screen name="Goals" component={MakeGoals} />
+      </Group>
+      <Group>
+        <Screen name="Productions" component={MakeProductions} />
       </Group>
     </Navigator>
   )
