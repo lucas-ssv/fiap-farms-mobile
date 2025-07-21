@@ -1,9 +1,9 @@
 import { useAuth } from '@/presentation/contexts'
 import { AuthRoutes } from './auth'
-import { AppRoutes } from './app'
+import { MakeAppRoutes } from '../factories/routes'
 
 export function Routes() {
   const { user } = useAuth()
 
-  return user?.id ? <AppRoutes /> : <AuthRoutes />
+  return user?.id ? <MakeAppRoutes /> : <AuthRoutes />
 }

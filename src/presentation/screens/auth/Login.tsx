@@ -164,11 +164,7 @@ export function Login({ authentication }: Props) {
             onPress={form.handleSubmit(onSubmit)}
             disabled={form.formState.isSubmitting}
           >
-            {form.formState.isSubmitting && (
-              <ButtonIcon>
-                <Spinner />
-              </ButtonIcon>
-            )}
+            {form.formState.isSubmitting && <Spinner className="text-white" />}
             <ButtonText>Acessar</ButtonText>
           </Button>
           <Button

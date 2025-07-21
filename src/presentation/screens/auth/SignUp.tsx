@@ -266,11 +266,7 @@ export function SignUp({ addAccount }: Props) {
             onPress={form.handleSubmit(onSubmit)}
             disabled={form.formState.isSubmitting}
           >
-            {form.formState.isSubmitting && (
-              <ButtonIcon>
-                <Spinner />
-              </ButtonIcon>
-            )}
+            {form.formState.isSubmitting && <Spinner className="text-white" />}
             <ButtonText>Criar conta</ButtonText>
           </Button>
           <Divider className="mt-4" />
