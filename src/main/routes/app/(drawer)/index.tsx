@@ -2,8 +2,8 @@ import {
   MakeCategories,
   MakeProducts,
 } from '@/main/factories/screens/app/Products'
+import { MakeDashboard } from '@/main/factories/screens/app/dashboard-factory'
 import { DrawerParamList } from '@/presentation/@types/navigation'
-import { Dashboard } from '@/presentation/screens/app'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { DrawerContent } from './components'
 import { DrawerActions, useNavigation } from '@react-navigation/native'
@@ -70,7 +70,7 @@ export function DrawerRoutes({ logout }: Props) {
         drawerActiveTintColor: '#11813c',
       }}
     >
-      <Screen name="Dashboard" component={Dashboard} />
+      <Screen name="Dashboard" component={MakeDashboard} />
       <Group>
         <Screen name="Products" component={MakeProducts} />
         <Screen name="Categories" component={MakeCategories} />
