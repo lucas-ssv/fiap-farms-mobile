@@ -1,0 +1,5 @@
+export * from './mock-add-customer-repository'
+export * from './mock-load-customers-repository'
+export * from './mock-watch-customers-repository'
+export * from './mock-update-customer-repository'
+export * from './mock-remove-customer-repository'
